@@ -61,7 +61,7 @@ for num in range(9, -1, -1):
 
 #練習5
 
-operators = ["+", "="]
+operators = ["", "="]
 for ope in operators:
     button = tk.Button(root, text=f"{ope}", width=4, height=2, font=("", 30))
     button.grid(row=r, column=c)
