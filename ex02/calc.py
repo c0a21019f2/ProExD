@@ -1,7 +1,5 @@
 import tkinter as tk
 import tkinter.messagebox as tkm
-import tkinter.colorchooser as tkme
-import re
 
 
 count = 0
