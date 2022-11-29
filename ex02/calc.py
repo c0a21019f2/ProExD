@@ -67,6 +67,7 @@ for ope in operators:
     button.grid(row=r, column=c)
     button.bind("<1>", button_click)
     c += 1
+    
     if c%3 == 0:
         r += 1
         c = 0
