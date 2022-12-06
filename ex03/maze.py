@@ -63,7 +63,7 @@ def main_proc():
     if mx == 13:
         if my == 7:
             canvas.create_text(
-            1400 // 2,
+            1500 // 2,
             900 // 2,
             font=("", 80),
             text="ゲームクリア！"
