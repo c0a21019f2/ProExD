@@ -38,15 +38,15 @@ def main_proc():
 
     if key == "Up": 
         cy -= 20
-    if key == "Down": cy += 20
-    if key == "Left": cx -= 20
-    if key == "Right": cx += 20
-    if key == "Up": my -= 1
-    if key == "Down": my += 1
-    if key == "Left": mx -= 1
-    if key == "Right": mx += 1
-    if key == "t":tori = tk.PhotoImage(file="fig/7.png")
-    if key == "r":
+    elif key == "Down": cy += 20
+    elif key == "Left": cx -= 20
+    elif key == "Right": cx += 20
+    elif key == "Up": my -= 1
+    elif key == "Down": my += 1
+    elif key == "Left": mx -= 1
+    elif key == "Right": mx += 1
+    elif key == "t":tori = tk.PhotoImage(file="fig/7.png")
+    elif key == "r":
         mx = 1
         my = 1
 
