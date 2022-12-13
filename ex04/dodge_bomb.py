@@ -8,7 +8,7 @@ times = 0
 times_mirai = 0
 flagu = 0 
 
-def check_bound(obj_rct, scr_rct):
+def check_bound(obj_rct, scr_rct):#壁に当たる爆弾ごとの判定
     # 第1引数：こうかとんrectまたは爆弾rect
     # 第2引数：スクリーンrect
     # 範囲内：+1／範囲外：-1
@@ -45,7 +45,7 @@ def main():
     tori_rct = tori_sfc.get_rect()
     tori_rct.center = 900, 400
     # scrn_sfcにtori_rctに従って，tori_sfcを貼り付ける
-    scrn_sfc.blit(tori_sfc, tori_rct) 
+    scrn_sfc.blit(tori_sfc, tori_rct) #こうかとんのblit
     
     #タイマーの初期設定
     counter, text = 10, '10'.rjust(3)
@@ -66,9 +66,9 @@ def main():
     bomb_rct3 = bomb_sfc.get_rect()
     bomb_rct3.centerx = random.randint(0, scrn_rct.width)
     bomb_rct3.centery = random.randint(0, scrn_rct.height)
-    scrn_sfc.blit(bomb_sfc, bomb_rct1) 
-    scrn_sfc.blit(bomb_sfc, bomb_rct2) 
-    scrn_sfc.blit(bomb_sfc, bomb_rct3) 
+    scrn_sfc.blit(bomb_sfc, bomb_rct1) #爆弾1のblit
+    scrn_sfc.blit(bomb_sfc, bomb_rct2) #爆弾2のblit
+    scrn_sfc.blit(bomb_sfc, bomb_rct3) #爆弾3のblit
 
     vx1, vy1 = +1, +1
     vx2, vy2 = +1, +1
@@ -84,7 +84,7 @@ def main():
     
 
     while True:
-        scrn_sfc.blit(pgbg_sfc, pgbg_rct) 
+        scrn_sfc.blit(pgbg_sfc, pgbg_rct) #背景のblit
         for event in pg.event.get():
             if event.type == pg.USEREVENT:
                 counter -= 1
@@ -137,16 +137,16 @@ def main():
             if flagu == 1:
                 return
                     
-        scrn_sfc.blit(tori_sfc, tori_rct) 
+        scrn_sfc.blit(tori_sfc, tori_rct) #こうかとんのblit
         # 練習６
         bomb_rct1.move_ip(vx1, vy1)
-        scrn_sfc.blit(bomb_sfc, bomb_rct1) 
+        scrn_sfc.blit(bomb_sfc, bomb_rct1) #爆弾1をスクリーンにblit
         yoko1, tate1 = check_bound(bomb_rct1, scrn_rct)
         bomb_rct2.move_ip(vx2, vy2)
-        scrn_sfc.blit(bomb_sfc, bomb_rct2) 
+        scrn_sfc.blit(bomb_sfc, bomb_rct2) #爆弾2をスクリーンにblit
         yoko2, tate2 = check_bound(bomb_rct2, scrn_rct)
         bomb_rct3.move_ip(vx3, vy3)
-        scrn_sfc.blit(bomb_sfc, bomb_rct3) 
+        scrn_sfc.blit(bomb_sfc, bomb_rct3) #爆弾3をスクリーンにblit
         yoko3, tate3 = check_bound(bomb_rct3, scrn_rct)
         vx1 *= yoko1
         vy1 *= tate1
@@ -179,7 +179,7 @@ def main():
         scrn_sfc.blit(font.render("liftlife:"+str(life), True, (0,0,0)), (0,scrn_rct.left+30))
 
         pg.display.update()
-        clock.tick(1000)
+        clock.tick(1000)#1000fpsの時を刻む
 
 if __name__ == "__main__":
     pg.init()
