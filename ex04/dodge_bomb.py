@@ -3,10 +3,10 @@ import random
 import sys
 import time
 
-#クリアー後の処理
-times = 0
-times_mirai = 0
-flagu = 0 
+#クリアー後の文字の入れ替えの処理のための変数95行目から使う
+times_now = 0 #現在のtimeの取得
+times_mirai = 0 #現在から1秒後のtimeの取得
+flagu = 0 #クリアー前後のフラグ
 
 def check_bound(obj_rct, scr_rct):#壁に当たる爆弾ごとの判定
     # 第1引数：こうかとんrectまたは爆弾rect
@@ -31,7 +31,7 @@ def check_bound(obj_rct, scr_rct):#壁に当たる爆弾ごとの判定
         tate3 = -1
     return yoko3, tate3
 def main():
-    global times_mirai, times, flagu
+    global times_mirai, times_now, flagu
     clock =pg.time.Clock()
     # 練習１
     pg.display.set_caption("逃げろ！こうかとん")
@@ -92,10 +92,10 @@ def main():
                      #text = str(counter).rjust(3) if counter > 0 else 'gameclear!'
                     text = str(counter).rjust(3) 
                 else:
-                    times = time.time()
+                    times_now = time.time()
 
                     times_mirai = time.time() + 1 if times_mirai == 0 else times_mirai
-                    if times < times_mirai:
+                    if times_now < times_mirai:
                         text = 'gameclear!'.rjust(3)
                     else:
                         text = 'EXIT is please Esc PUSH'.rjust(3) 
