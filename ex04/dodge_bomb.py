@@ -80,8 +80,6 @@ def main():
     #ライフの設定
     life = 100
     
-    
-    
 
     while True:
         scrn_sfc.blit(pgbg_sfc, pgbg_rct) #背景のblit
@@ -89,7 +87,6 @@ def main():
             if event.type == pg.USEREVENT:
                 counter -= 1
                 if counter > 0:
-                     #text = str(counter).rjust(3) if counter > 0 else 'gameclear!'
                     text = str(counter).rjust(3) 
                 else:
                     times_now = time.time()
@@ -100,14 +97,7 @@ def main():
                     else:
                         text = 'EXIT is please Esc PUSH'.rjust(3) 
                         flagu = 1
-
-
-                    
-
-                    
-
-
-                        
+                                        
                 
             if event.type == pg.QUIT:
                 return
