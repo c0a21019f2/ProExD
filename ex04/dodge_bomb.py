@@ -166,6 +166,7 @@ def main():
         #タイマー実装
         scrn_sfc.blit(font.render("lefttime:"+text, True, (0, 0, 0)), (0, scrn_rct.left))
         pg.display.flip()
+        #ライフの実装
         scrn_sfc.blit(font.render("liftlife:"+str(life), True, (0,0,0)), (0,scrn_rct.left+30))
 
         pg.display.update()
