@@ -3,9 +3,8 @@ import random
 import sys
 import time
 
-#クリアー後の文字の入れ替えの処理のための変数95行目から使う
-times_now = 0 #現在のtimeの取得
-times_mirai = 0 #現在から1秒後のtimeの取得
+times_now = 0 #現在のtimeの取得の保管
+times_mirai = 0 #現在から5秒後のtimeの取得の保管
 
 class Screen:
     def __init__(self, title, wh, img_path):
@@ -19,7 +18,7 @@ class Screen:
         self.sfc.blit(self.bgi_sfc, self.bgi_rct) 
 
 
-class Bird:
+class Bird:#こうかとんの初期設定
     key_delta = {
         pg.K_UP:    [0, -1],
         pg.K_DOWN:  [0, +1],
@@ -48,7 +47,7 @@ class Bird:
         self.blit(scr)                    
 
 
-class Bomb:
+class Bomb:#爆弾の初期設定
     def __init__(self, color, rad, vxy, scr:Screen):
         self.sfc = pg.Surface((2*rad, 2*rad)) # 正方形の空のSurface
         self.sfc.set_colorkey((0, 0, 0))
@@ -69,7 +68,7 @@ class Bomb:
         self.blit(scr)
         
 
-class GameCount:#こうかとんの画像の表示
+class GameCount:#爆弾の接触毎にこうかとんの画像の表示
     def __init__(self, image_path, ratio, xy):
         self.sfc = pg.image.load(image_path)
         self.sfc = pg.transform.rotozoom(self.sfc, 0 , ratio)#ratio = 10.0
@@ -82,7 +81,7 @@ class GameCount:#こうかとんの画像の表示
     def blit(self, scr:Screen):
         scr.sfc.blit(self.sfc, self.rct)
 
-class Shot:
+class Shot:#弾丸の表示
     def __init__(self, image_path, ratio, vx, vy):
         self.sfc = pg.image.load(image_path)
         self.sfc = pg.transform.rotozoom(self.sfc, 0 , ratio)#ratio = 10.0
@@ -95,7 +94,6 @@ class Shot:
     def blit(self, scr:Screen):
         scr.sfc.blit(self.sfc, self.rct)
 
-                
 
 def check_bound(obj_rct, scr_rct):
     """
@@ -110,7 +108,6 @@ def check_bound(obj_rct, scr_rct):
         tate = -1
     return yoko, tate
 
-
 def main():
     global times_mirai
     global times_now
@@ -120,7 +117,6 @@ def main():
     # 練習１
     scr = Screen("負けるな！こうかとん", (1600,900), "fig/pg_bg.jpg")
     
-
     # 練習３
     kkt = Bird("fig/6.png", 2.0, (900,400))
     kkt.update(scr)
