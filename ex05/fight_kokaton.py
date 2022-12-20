@@ -122,7 +122,6 @@ def main():
     kkt.update(scr)
     
     bombs = []
-    #colors = [(255,255,255), (255, 0, 0), (0, 255, 0), (0, 0, 255), (125, 125, 125)]
     colors = ["red", "green", "blue", "yellow", "magenta"]
     for i in range(5):
         color = colors[i]
