@@ -1,12 +1,13 @@
-import pygame as pg
-import random
-import sys
-import time
+import random #randomモジュールのインポート
+import sys    #sysモジュールのインポート
+import time   #timeモジュールのインポート
+
+import pygame as pg #pygameモジュールをpgとしてインポート
 
 times_now = 0 #現在のtimeの取得の保管
 times_mirai = 0 #現在から5秒後のtimeの取得の保管
 
-class Screen:
+class Screen:#Screenの表示
     def __init__(self, title, wh, img_path):
         pg.display.set_caption(title) 
         self.sfc = pg.display.set_mode(wh)
@@ -74,9 +75,6 @@ class GameCount:#爆弾の接触毎にこうかとんの画像の表示
         self.sfc = pg.transform.rotozoom(self.sfc, 0 , ratio)#ratio = 10.0
         self.rct = self.sfc.get_rect()
         self.rct.center = xy #0,0
-    
-    def update(self, scr:Screen):
-        self.blit(scr)
     
     def blit(self, scr:Screen):
         scr.sfc.blit(self.sfc, self.rct)
@@ -150,16 +148,16 @@ def main():
                 times_mirai = time.time() + 5 if times_mirai == 0 else times_mirai
                 if times_now < times_mirai:
                     count = GameCount("fig/3.png", 10.0, (800,450))
-                    count.update(scr)
+                    count.blit(scr)
                 else:
                     return
         
-        pg.display.update()
+        pg.display.update()#displayのアップデート
         clock.tick(1000)
 
 
 if __name__ == "__main__":
-    pg.init()
-    main()
-    pg.quit()
-    sys.exit()
+    pg.init()  #pygameを初期化
+    main()     #ゲームの実行
+    pg.quit()  #pygemeの終了
+    sys.exit() #プログラムの終了
