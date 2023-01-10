@@ -1,8 +1,8 @@
 ### インポート
 import sys
 import random
+
 import pygame as pg
-#from pygame.locals import *
  
 ### 定数
 B_SIZE = 40     # ブロック辺長
@@ -13,16 +13,15 @@ WIDTH_brock = 16 #横のブロックの数
 HEIGHT_brock = 16 #縦のブロックの数
 WIDTH  = WIDTH_brock * B_SIZE  # 画面横サイズ
 HEIGHT = HEIGHT_brock * B_SIZE   # 画面縦サイズ
-
 F_SIZE = 60     # フォントサイズ
  
+
 ### 迷路マップの生成
 def make_maze(yoko, tate):
     global maze_lst
-
+    
     XP = [ 0, 1, 0, -1]
     YP = [-1, 0, 1,  0]
-
 
     maze_lst = [[1 for i in range(tate)] for j in range(yoko)]  #大きさがtate*yokoの「1」の2次元リスト
     for maze_yoko in range(1, len(maze_lst)-1): #壁ではない部分を0にする
@@ -65,6 +64,7 @@ class Maze(pg.sprite.Sprite):#引数にSpriteを取る
     def draw(self, surface):
         surface.blit(self.image, self.rect)
  
+
 ### こうかこんを作るCharacterクラス
 class Character(pg.sprite.Sprite):#引数にsprite
  
@@ -81,10 +81,9 @@ class Character(pg.sprite.Sprite):#引数にsprite
         ### キャラクターオブジェクト生成
         self.rect = self.image.get_rect()
  
-    
     ### こうかこんの場所の更新
     def update(self, char_x, char_y):
- 
+        
         ### こうかこんの位置
         self.rect.centerx = char_x
         self.rect.centery = char_y
@@ -92,6 +91,7 @@ class Character(pg.sprite.Sprite):#引数にsprite
     ### こうかこんの描画
     def draw(self, surface):
         surface.blit(self.image, self.rect)
+ 
  
 ### main関数
 def main():
@@ -108,7 +108,6 @@ def main():
     surface = pg.display.set_mode((WIDTH,HEIGHT))
     rect = surface.get_rect()
     
- 
     ### 迷路グループ作成
     make_maze(WIDTH_brock,HEIGHT_brock)
 
@@ -190,7 +189,6 @@ def main():
                     if (char_y < HEIGHT - (C_SIZE*2)) and (maze_lst[row+2][col+1] != 1):
                         row += 1
                         char_y += M_DOT
-                print(char_y, char_x)
  
 ### 終了関数
 def exit():
